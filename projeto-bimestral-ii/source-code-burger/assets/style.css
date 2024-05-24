@@ -1,0 +1,578 @@
+/* Define estilos padrão para todos os elementos HTML */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais para o corpo da página */
+body {
+    background: url(../assets/img/background.png), linear-gradient(50deg, #555555, #0e0e0e);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o contêiner principal */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* Cor de fundo do contêiner */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* Estilos para o título principal */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos para uma seção genérica */
+.section {
+    margin-bottom: 30px;
+}
+
+/* Estilos para o cabeçalho da seção */
+.section-header {
+    display: flex; /* Usa flexbox para alinhar itens */
+    justify-content: space-between; /* Distribui o espaço entre os itens */
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Estilos para o título da seção */
+.section-header h2 {
+    margin: 0;
+}
+
+/* Estilos para o conteúdo da seção */
+.section-content {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical se necessário */
+}
+
+/* Estilos para tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Estilos para células de cabeçalho e células de dados */
+th,
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Estilos específicos para cabeçalhos de tabela */
+th {
+    background-color: #f2f2f2;
+}
+
+/* Estilos para botões */
+.btn {
+    padding: 8px 12px;
+    background-color: #a00909;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Estilos para o estado de hover do botão */
+.btn:hover {
+    background-color: #d30b0b;
+}
+
+/* Estilos para formulários */
+form {
+    margin-top: 10px;
+}
+
+/* Estilos para rótulos de formulário */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Estilos para elementos de entrada de texto e número, e seletores */
+input[type="number"],
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* Estilos para o foco nos elementos de entrada */
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+}
+
+/* Estilos para botões de envio em formulários */
+input[type="submit"] {
+    color: #fff;
+    border: none; /* Remove a borda */
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Estilos para uma linha divisória */
+.divider {
+    height: 30px;
+    width: 2px;
+    background-color: white;
+    margin: 0 50px;
+}
+
+/* Estilos para links genéricos */
+a {
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+    
+}
+
+/* Estilos para o estado de hover dos links */
+a:hover {
+    background-color: #202020;
+}
+
+/* Estilos para a barra de navegação */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para a logomarca */
+.logo {
+    width: 50px;
+    margin-right: 0px;
+    margin-left: 232px;
+}
+
+/* Estilos para a lista de itens da barra de navegação */
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    margin-left: auto;
+}
+
+/* Estilos para cada item da lista de navegação */
+.navbar ul li {
+    margin-right: 20px;
+}
+
+/* Estilos para links na barra de navegação */
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Estilos para o estado de hover dos links na barra de navegação */
+.navbar ul li a:hover {
+    background-color: #202020;
+}
+
+/* Estilos para o rodapé */
+.footer {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 30px 0;
+    text-align: center;
+}
+
+/* Estilos para a lista de itens no rodapé */
+.footer ul {
+    list-style-type: none;
+}
+
+/* Estilos para cada item da lista no rodapé */
+.footer ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Estilos para links no rodapé */
+.footer ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* Estilos para o nome da marca */
+.brand-name {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    font-family: 'Dancing Script', cursive; /* Fonte bonitinha lá */
+}
+
+/* Media query para dispositivos com tela de até 1100px de largura */
+@media screen and (max-width: 1100px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .logo {
+        width: 40px;
+        margin-left: 10px;
+    }
+
+    .navbar ul li {
+        margin-right: 10px;
+    }
+
+    .brand-name {
+        font-size: 25px;
+    }
+
+    .container,
+    .btn,
+    input[type="number"],
+    input[type="text"],
+    select,
+    input[type="submit"] {
+        font-size: 14px;
+    }
+
+    .divider {
+        margin: 0 10px;
+    }
+
+    .section-header h2 {
+        font-size: 20px;
+    }
+
+    .section-content {
+        max-height: 250px;
+    }
+
+    .footer {
+        padding: 25px 0;
+    }
+
+    .footer ul li {
+        margin-right: 8px;
+    }
+
+    .footer ul li a {
+        font-size: 16px;
+    }
+}
+
+/* Media query para dispositivos com tela de até 530px de largura */
+@media screen and (max-width: 637px) {
+    .navbar {
+        padding: 5px;
+    }
+
+    .logo {
+        width: 30px;
+        margin-left: 5px;
+    }
+
+    .navbar ul li a {
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    .brand-name {
+        font-size: 20px;
+    }
+
+    .container,
+    .btn,
+    input[type="number"],
+    input[type="text"],
+    select,
+    input[type="submit"] {
+        font-size: 12px;
+    }
+
+    .divider {
+        margin: 0 5px;
+    }
+
+    .section-header h2 {
+        font-size: 16px;
+    }
+
+    .section-content {
+        max-height: 150px;
+    }
+
+    .footer {
+        padding: 10px 0;
+    }
+
+    .footer ul li {
+        margin-right: 3px;
+    }
+
+    .footer ul li a {
+        font-size: 12px;
+    }
+}
+
+/* Media query para dispositivos com tela de até 430px de largura */
+@media screen and (max-width: 430px) {
+    .navbar {
+        padding: 5px;
+    }
+
+    .logo {
+        width: 30px;
+        margin-left: 5px;
+    }
+
+    .navbar ul li a{
+        font-size: 12px;
+    }
+    .navbar ul {
+        margin-right: 5px 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-content: space-around;
+    }
+
+    .brand-name {
+        font-size: 0;
+    }
+
+    .container,
+    .btn,
+    input[type="number"],
+    input[type="text"],
+    select,
+    input[type="submit"] {
+        font-size: 12px;
+    }
+
+    .divider {
+        margin: 0 5px;
+    }
+
+    .section-header h2 {
+        font-size: 16px;
+    }
+
+    .section-content {
+        max-height: 150px;
+    }
+
+    .footer {
+        padding: 10px 0;
+    }
+
+    .footer ul li {
+        margin-right: 3px;
+    }
+
+    .footer ul li a {
+        font-size: 12px;
+    }
+}
+
+/* Media query para dispositivos com tela de até 430px de largura */
+@media screen and (max-width: 391px) {
+    .navbar {
+        padding: 5px;
+    }
+
+    .logo {
+        width: 30px;
+        margin-left: 5px;
+    }
+
+    .navbar ul li a{
+        font-size: 11px;
+        text-align: center;
+    }
+    .navbar ul {
+        margin-right: 5px 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-content: space-between;
+    }
+
+    .brand-name {
+        font-size: 0;
+    }
+
+    .container,
+    .btn,
+    input[type="number"],
+    input[type="text"],
+    select,
+    input[type="submit"] {
+        font-size: 12px;
+    }
+
+    .divider {
+        margin: 0 5px;
+    }
+
+    .section-header h2 {
+        font-size: 16px;
+    }
+
+    .section-content {
+        max-height: 150px;
+    }
+
+    .footer {
+        padding: 10px 0;
+    }
+
+    .footer ul li {
+        margin-right: 3px;
+    }
+
+    .footer ul li a {
+        font-size: 12px;
+    }
+}
+
+/* Media query para dispositivos com tela de até 430px de largura */
+@media screen and (max-width: 376px) {
+    .navbar {
+        padding: 5px;
+    }
+
+    .logo {
+        width: 30px;
+        margin-left: 5px;
+    }
+
+    .navbar ul li a{
+        font-size: 10px;
+        text-align: center;
+    }
+    .navbar ul {
+        margin-right: 5px 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-content: space-between;
+    }
+
+    .brand-name {
+        font-size: 0;
+    }
+
+    .container,
+    .btn,
+    input[type="number"],
+    input[type="text"],
+    select,
+    input[type="submit"] {
+        font-size: 12px;
+    }
+
+    .divider {
+        margin: 0 5px;
+    }
+
+    .section-header h2 {
+        font-size: 16px;
+    }
+
+    .section-content {
+        max-height: 150px;
+    }
+
+    .footer {
+        padding: 10px 0;
+    }
+
+    .footer ul li {
+        margin-right: 3px;
+    }
+
+    .footer ul li a {
+        font-size: 12px;
+    }
+}
+
+/* Media query para dispositivos com tela de até 430px de largura */
+@media screen and (max-width: 289px) {
+    .navbar {
+        padding: 5px;
+    }
+
+    .logo {
+        width: 30px;
+        margin-left: 5px;
+    }
+
+    .navbar ul li a{
+        font-size: 8px;
+        text-align: center;
+    }
+    .navbar ul {
+        margin-right: 5px 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-content: space-between;
+    }
+
+    .brand-name {
+        font-size: 0;
+    }
+
+    .container,
+    .btn,
+    input[type="number"],
+    input[type="text"],
+    select,
+    input[type="submit"] {
+        font-size: 12px;
+    }
+
+    .divider {
+        margin: 0 5px;
+    }
+
+    .section-header h2 {
+        font-size: 16px;
+    }
+
+    .section-content {
+        max-height: 150px;
+    }
+
+    .footer {
+        padding: 10px 0;
+    }
+
+    .footer ul li {
+        margin-right: 3px;
+    }
+
+    .footer ul li a {
+        font-size: 12px;
+    }
+}
