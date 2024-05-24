@@ -1,0 +1,6 @@
+body {
+    background: url(./assets/img/background.png), linear-gradient(50deg, #555555, #0e0e0e);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
