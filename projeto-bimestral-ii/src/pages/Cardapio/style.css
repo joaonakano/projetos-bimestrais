@@ -1,0 +1,36 @@
+.containerCardapio{
+    max-width: 1200px;
+    background-color: #fff; /* Cor de fundo do contêiner */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 20px auto;
+    padding: 20px;
+
+}
+
+.cardapio img{
+    width: 250px;
+    height: 200px;
+    margin: 0 68px;
+    border-radius: 5px;
+}
+
+.preco{
+    display: flex;
+    align-items: center;
+}
+
+.preco p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0 165px;
+}
+
+.precoReal{
+    display: flex;
+    align-items: center;
+}
+
+.precoReal p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0 173px;
+}
