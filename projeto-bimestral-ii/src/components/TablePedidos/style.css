@@ -24,6 +24,7 @@ th {
     padding: 10px;
     max-height: 300px;
     overflow-y: auto; /* Adiciona uma barra de rolagem vertical se necessário */
+    margin-bottom: 20px;
 }
 
 /* Estilos para o cabeçalho da seção */
@@ -31,7 +32,7 @@ th {
     display: flex; /* Usa flexbox para alinhar itens */
     justify-content: space-between; /* Distribui o espaço entre os itens */
     align-items: center;
-    margin-bottom: 10px;
+    padding: 0px 0px 0px 0px;
 }
 
 /* Estilos para o título da seção */
@@ -53,3 +54,4 @@ th {
 .btn:hover {
     background-color: #0c53a4;
 }
+
