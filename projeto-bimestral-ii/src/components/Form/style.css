@@ -1,0 +1,38 @@
+/* Estilos para formulários */
+form {
+    margin-top: 10px;
+}
+
+/* Estilos para rótulos de formulário */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Estilos para elementos de entrada de texto e número, e seletores */
+input[type="number"],
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* Estilos para o foco nos elementos de entrada */
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+}
+
+/* Estilos para botões de envio em formulários */
+input[type="submit"] {
+    color: #fff;
+    border: none; /* Remove a borda */
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}

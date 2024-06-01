@@ -1,0 +1,15 @@
+/* Estilos para botões */
+.btn {
+    padding: 8px 12px;
+    background-color: #0077ff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Estilos para o estado de hover do botão */
+.btn:hover {
+    background-color: #0c53a4;
+}
+

@@ -1,16 +1,21 @@
 import './style.css';
-import Table from '../../components/Table/index.js';
 
-const pedidos = [
+import React, { useState, useEffect } from 'react';
+import Table from '../../components/Table';
+import Form from '../../components/Form'
+
+const tableHeadings = ["Pedido", "Cliente", "Lanche", "Data", "Hora"];
+    
+const pedidosPadrao = [
     {
-        numero: 1,
+        numero: 0,
         cliente: "João Silva",
         pedido: "X-Burger",
         data: "2024-03-28",
         hora: "12:30"
     },
     {
-        numero: 2,
+        numero: 1,
         cliente: "Nilson Santos",
         pedido: "Coca-Cola",
         data: "2024-01-01",
@@ -18,8 +23,22 @@ const pedidos = [
     }
 ];
 
-export default function Home() {
-    const tableHeadings = ["Pedido", "Cliente", "Lanche", "Data", "Hora"];
+function Home() {
+    const [pedidos, setPedidos] = useState(() => { // Hook 1 - useState para guardar a lista Pedidos
+        const pedidosStorage = localStorage.getItem('pedidos');
+        return pedidosStorage ? JSON.parse(pedidosStorage) : pedidosPadrao; // Condicional se caso seja a primeira inicialização
+    });
+
+    useEffect(() => { // Hook 3 - useEffect para sincronizar o LocalStorage a cada alteração na lista Pedidos
+        const pedidosFormatados = JSON.stringify(pedidos);
+        localStorage.setItem('pedidos', pedidosFormatados);
+    }, [pedidos]);
+
+    function atualizarPedidos(pedidoID, chave, valor) {
+        const novosPedidos = [...pedidos];
+        novosPedidos[pedidoID][chave] = valor;
+        setPedidos(novosPedidos);
+    }
 
     return (
         <>
@@ -47,12 +66,10 @@ export default function Home() {
                 />
 
                 {/* Componente - FORMULÁRIO */}
-                <Table
-                    titulo="Futuro FORM"
-                    headings={["1", "2", "3"]}
-                    data={pedidos}
-                />
+                <Form atualizar={atualizarPedidos} pedidos={pedidos} />
             </div>
         </>
     );
 }
+
+export default Home;

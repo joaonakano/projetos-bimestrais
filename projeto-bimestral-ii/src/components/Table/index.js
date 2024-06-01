@@ -1,13 +1,6 @@
 import "./style.css";
 
-// Função de Criação de Botões
-function Botao({ nome, acao }) {
-    return (
-        <button type="submit" className="btn" onClick={acao}>
-            {nome}
-        </button>
-    );
-}
+import Botao from '../Botao'
 
 // Função Primária de Criação de Tabelas
 export default function Table({ titulo, headings, data, nomeBotao, acaoBotao }) {
