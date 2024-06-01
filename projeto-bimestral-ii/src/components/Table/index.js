@@ -1,56 +1,45 @@
-import "./style.css"
+import "./style.css";
 
-function Botao(props){
-    let botao = props.nome;
-    let acao = props.acao;
-
+// Função de Criação de Botões
+function Botao({ nome, acao }) {
     return (
-        <button type="submit" className="btn" onClick={acao}>{botao}</button>
+        <button type="submit" className="btn" onClick={acao}>
+            {nome}
+        </button>
     );
 }
 
-export default function Table(props) {
-    let titulo = props.title;
-    let tableHeadings = props.headings;
-    let tableData = props.data;
-
+// Função Primária de Criação de Tabelas
+export default function Table({ titulo, headings, data, nomeBotao, acaoBotao }) {
     return (
         <>
-            {/* Títulos e Botões Superiores */}
-            <div className="section-header">
+            <div className="section-header"> {/* Títulos e Botões Superiores */}
                 <h2>{titulo}</h2>
-
-                {(
-                    props.nomeBotao || props.acaoBotao
-                ) && (
-                    <Botao nome={props.nomeBotao} acao={props.acaoBotao}/>
-                )}
-                
+                {(nomeBotao || acaoBotao) && <Botao nome={nomeBotao} acao={acaoBotao} />} {/* Condicional que cria botões apenas se for informado um NOME ou AÇÃO para o BOTÃO */}
             </div>
 
-            {/* Tabela */}
-            <div className="section-content">
+            <div className="section-content"> {/* Tabela */}
                 <table>
-
                     <thead>
                         <tr>
-                            {tableHeadings.map((heading, index) => (
+                            {/* Mapear sobre a Lista de Títulos Informados para a Tabela e convertê-las em TAGS HTML (TableHeading) */}
+                            {headings.map((heading, index) => (
                                 <th key={index}>{heading}</th>
                             ))}
                         </tr>
                     </thead>
 
                     <tbody>
-                        {/* Mapear sobre os objetos javascript do Datalist */}
-                        {tableData.map((data, dataIndex) => (
-                            <tr key={dataIndex}>
-                                {Object.values(data).map((value, valueIndex) => (
-                                    <td key={valueIndex}>{value}</td>
+                        {/* Mapear sobre os Objetos Javascript da Prop. Data e convertê-los em TAGS HTML (TableRow) */}
+                        {data.map((rowData, rowIndex) => (
+                            <tr key={rowIndex}>
+                                {/* Mapear sobre os Valores de cada Objeto da Prop. Data e convertê-los em TAGS HTML (TableData) */}
+                                {Object.values(rowData).map((value, columnIndex) => (
+                                    <td key={columnIndex}>{value}</td>
                                 ))}
                             </tr>
                         ))}
                     </tbody>
-
                 </table>
             </div>
         </>

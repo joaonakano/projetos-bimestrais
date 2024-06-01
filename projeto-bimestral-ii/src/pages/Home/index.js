@@ -1,30 +1,26 @@
-import './style.css'
-import Table from '../../components/Table/index.js'
+import './style.css';
+import Table from '../../components/Table/index.js';
 
+const pedidos = [
+    {
+        numero: 1,
+        cliente: "João Silva",
+        pedido: "X-Burger",
+        data: "2024-03-28",
+        hora: "12:30"
+    },
+    {
+        numero: 2,
+        cliente: "Nilson Santos",
+        pedido: "Coca-Cola",
+        data: "2024-01-01",
+        hora: "23:59"
+    }
+];
 
-// Definição de dados
-let data1 = {
-    numero: 1,
-    cliente: "João Silva",
-    pedido: "X-Burger",
-    data: "2024-03-28",
-    hora: "12:30"
-}
-
-let data2 = {
-    numero: 2,
-    cliente: "Nilson Santos",
-    pedido: "Coca-Cola",
-    data: "2024-01-01",
-    hora: "23:59"
-}
-
-
-// Página Home
 export default function Home() {
-    let tableHeadings = ["Pedido", "Cliente", "Lanche", "Data", "Hora"];
-    let datalist = [data1, data2];
-    
+    const tableHeadings = ["Pedido", "Cliente", "Lanche", "Data", "Hora"];
+
     return (
         <>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,9 +29,29 @@ export default function Home() {
 
             <div className="container">
                 <h1>Departamento de Pedidos</h1>
-                <Table title="Lista de Pedidos em Aberto" headings={tableHeadings} data={datalist} nomeBotao="Atualizar" acaoBotao={() => {window.location.reload()}}/>
-                <Table title="Histórico de Pedidos" headings={tableHeadings} data={datalist} />
-                <Table title="Skibididop" headings={["skibidi", "dop", "dop"]} data={datalist} />
+
+                {/* Componente - TABLE + BOTÃO */}
+                <Table
+                    titulo="Lista de Pedidos em Aberto"
+                    headings={tableHeadings}
+                    data={pedidos}
+                    nomeBotao="Atualizar"
+                    acaoBotao={() => { window.location.reload() }}
+                />
+
+                {/* Componente - TABLE */}
+                <Table
+                    titulo="Histórico de Pedidos"
+                    headings={tableHeadings}
+                    data={pedidos}
+                />
+
+                {/* Componente - FORMULÁRIO */}
+                <Table
+                    titulo="Futuro FORM"
+                    headings={["1", "2", "3"]}
+                    data={pedidos}
+                />
             </div>
         </>
     );
