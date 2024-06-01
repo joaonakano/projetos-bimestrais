@@ -1,5 +1,5 @@
 import './style.css'
-import TablePedidos from '../../components/TablePedidos/index.js'
+import Table from '../../components/Table/index.js'
 
 
 // Definição de dados
@@ -19,16 +19,24 @@ let data2 = {
     hora: "23:59"
 }
 
+
 // Página Home
 export default function Home() {
     let tableHeadings = ["Pedido", "Cliente", "Lanche", "Data", "Hora"];
     let datalist = [data1, data2];
     
     return (
-        <div className="container">
-            <h1>Departamento de Pedidos</h1>
-            <TablePedidos title="Lista de Pedidos em Aberto" headings={tableHeadings} data={datalist} botao="sim"/>
-            <TablePedidos title="Histórico de Pedidos" headings={tableHeadings} data={datalist} />
-        </div>
+        <>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" />
+            <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
+
+            <div className="container">
+                <h1>Departamento de Pedidos</h1>
+                <Table title="Lista de Pedidos em Aberto" headings={tableHeadings} data={datalist} nomeBotao="Atualizar" acaoBotao={() => {window.location.reload()}}/>
+                <Table title="Histórico de Pedidos" headings={tableHeadings} data={datalist} />
+                <Table title="Skibididop" headings={["skibidi", "dop", "dop"]} data={datalist} />
+            </div>
+        </>
     );
 }

@@ -11,3 +11,7 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
 }
+
+.container {
+    font-family: 'Ubuntu', sans-serif;
+}

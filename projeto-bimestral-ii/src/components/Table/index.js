@@ -1,6 +1,15 @@
 import "./style.css"
 
-export default function TablePedidos(props) {
+function Botao(props){
+    let botao = props.nome;
+    let acao = props.acao;
+
+    return (
+        <button type="submit" className="btn" onClick={acao}>{botao}</button>
+    );
+}
+
+export default function Table(props) {
     let titulo = props.title;
     let tableHeadings = props.headings;
     let tableData = props.data;
@@ -11,10 +20,12 @@ export default function TablePedidos(props) {
             <div className="section-header">
                 <h2>{titulo}</h2>
 
-                {/* Condicional que cria um botão APENAS se for informado um nome no prop.botão */}
-                {props.botao && (
-                    <button type="submit" className="btn">{props.botao}</button>
+                {(
+                    props.nomeBotao || props.acaoBotao
+                ) && (
+                    <Botao nome={props.nomeBotao} acao={props.acaoBotao}/>
                 )}
+                
             </div>
 
             {/* Tabela */}

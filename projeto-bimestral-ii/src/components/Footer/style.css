@@ -1,0 +1,10 @@
+footer {
+    background-color: rgb(55, 170, 223);
+    padding: 1rem;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+footer p {
+    text-align: center;
+    color: white;
+}
