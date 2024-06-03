@@ -18,7 +18,7 @@ export default function RoutesApp() {
                 <Route path='/' element={<Home />} />
                 <Route path='/cardapio' element={<Cardapio />} />
                 <Route path='/contato' element={<Contato />} />
-                <Route path='sobre' element={<Sobre />} />
+                <Route path='/sobre' element={<Sobre />} />
             </Routes>
             <Footer />
         </BrowserRouter>

@@ -29,7 +29,7 @@ function Home() {
         return pedidosStorage ? JSON.parse(pedidosStorage) : pedidosPadrao; // Condicional se caso seja a primeira inicialização
     });
 
-    useEffect(() => { // Hook 3 - useEffect para sincronizar o LocalStorage a cada alteração na lista Pedidos
+    useEffect(() => { // Hook 2 - useEffect para sincronizar o LocalStorage a cada alteração na lista Pedidos
         const pedidosFormatados = JSON.stringify(pedidos);
         localStorage.setItem('pedidos', pedidosFormatados);
     }, [pedidos]);
