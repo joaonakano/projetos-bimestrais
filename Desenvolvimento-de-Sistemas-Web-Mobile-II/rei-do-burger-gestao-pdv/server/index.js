@@ -1,16 +1,21 @@
 const express = require("express")
 const cors = require("cors")
+
 const app = express()
-const firebaseFunctions = require('./firebase')
+const firebaseFunctions = require('./config/firebase')
 
 app.use(express.json())
 app.use(cors())
+
+
+// Importando as rotas
+const orderRoute = require("./routes/orders")
+
+// Inicializando o Firebase
 firebaseFunctions.initializeFirebaseApp()
 
-app.post("/create", async (req, res) => {
-    const data = req.body
-    await firebaseFunctions.uploadData()
-    res.send({message: "User Added"})
-})
+// Inicializando as Rotas
+app.use("/orders", orderRoute)
 
-app.listen(4000, () => console.log('The server has start at port 4000'))
+
+app.listen(8000, () => console.log('The server has started at http://localhost:8000'))
