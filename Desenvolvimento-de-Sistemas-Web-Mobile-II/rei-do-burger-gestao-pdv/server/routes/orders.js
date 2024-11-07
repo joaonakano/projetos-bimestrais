@@ -7,8 +7,8 @@ const router = express.Router()
 const orderController = require("../controllers/orderController")
 
 // Inicializando os Controllers para a Rota "/orders"
-router.get("/all", orderController.getAllOrders)
-router.get("/:id", orderController.getSpecificOrder)
+router.get("/get/all", orderController.getAllOrders)
+router.get("/get/:id", orderController.getSpecificOrder)
 
 
 module.exports = router;

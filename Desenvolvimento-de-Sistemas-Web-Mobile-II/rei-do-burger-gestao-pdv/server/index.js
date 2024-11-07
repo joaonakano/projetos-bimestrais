@@ -15,7 +15,7 @@ const orderRoute = require("./routes/orders")
 firebaseFunctions.initializeFirebaseApp()
 
 // Inicializando as Rotas
-app.use("/orders", orderRoute)
+app.use("/api", orderRoute)
 
 
 app.listen(8000, () => console.log('The server has started at http://localhost:8000'))
