@@ -18,13 +18,15 @@ const getFirebaseApp = () => app
 
 
 // Operações CRUD para o Firestore
+// Create
 const uploadData = async (data) => {
   const dataToUpload = data
   const orderRef = db.collection("pedidos")
-  const docRef = await orderRef.doc().set(dataToUpload)
-  return docRef
+  const doc = await orderRef.doc().set(dataToUpload)
+  return doc
 }
 
+// Read - All
 const fetchAllData = async () => {
   const orderRef = db.collection("pedidos")
   const snapshot = await orderRef.get()
@@ -33,12 +35,12 @@ const fetchAllData = async () => {
   snapshot.forEach(doc => {
     let fetchedData = doc.data() 
     data.push({
-      id: doc.id,
+      idDocumento: doc.id,
+      idPedido: fetchedData.idPedido,
       pedido: fetchedData.pedido,
       cliente: fetchedData.cliente,
       delivery: fetchedData.delivery,
       horaPedido: fetchedData.horaPedido,
-      idPedido: fetchedData.idPedido,
       meioPagamento: fetchedData.meioPagamento,
       status: fetchedData.status,
       valor: fetchedData.valor
@@ -47,5 +49,14 @@ const fetchAllData = async () => {
   return data
 }
 
+// Read - Selected
+const fetchData = async (id) => {
+  let data = []
+  const orderRef = await db.collection("pedidos").doc(id).get().then(doc => {
+    data.push(doc.data())
+  })
+  return data
+}
 
-module.exports = { initializeFirebaseApp, getFirebaseApp, uploadData, fetchAllData }
+
+module.exports = { initializeFirebaseApp, getFirebaseApp, uploadData, fetchAllData, fetchData }

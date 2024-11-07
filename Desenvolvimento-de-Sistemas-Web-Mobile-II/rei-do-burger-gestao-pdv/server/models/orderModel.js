@@ -6,4 +6,10 @@ const fetchAllOrders = () => {
     return data
 }
 
-module.exports = { fetchAllOrders }
+// Pegar um Pedido Específico do Firestore
+const fetchSpecificOrder = (orderId) => {
+    const data = firebaseUtils.fetchData(orderId)
+    return data
+}
+
+module.exports = { fetchAllOrders, fetchSpecificOrder }
