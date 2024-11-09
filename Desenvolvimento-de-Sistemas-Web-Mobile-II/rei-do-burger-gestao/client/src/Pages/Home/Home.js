@@ -13,28 +13,40 @@ export default function Home() {
     
     return(
     <>
-        <h1>Pedidos</h1>    
-        
-        <ul>
-                {ordersList.map((order) => {
-                    const { documentID, data } = order;
-                    return (
-                        <li key={documentID}>
-                            <h2>Cliente: {data.cliente}</h2>
-                            <p>Valor: R$ {data.valor}</p>
-                            <p>Status: {data.status}</p>
-                            <p>Meio de Pagamento: {data.meioPagamento}</p>
-                            <p>Delivery: {data.delivery ? 'Sim' : 'Não'}</p>
-                            <h3>Pedido:</h3>
-                            <ul>
-                                {data.pedido && data.pedido.map((item, index) => (
-                                    <li key={index}>{item}</li>
-                                ))}
-                            </ul>
-                        </li>
-                    );
-                })}
-            </ul>
+    <div className='container-pedidos'>
+            <h1>Pedidos</h1>    
+            <div className='grade-pedidos'>
+
+                    {ordersList.map((order) => {
+                        const { documentID, data } = order;
+                        return (
+
+                            <div key={documentID} className='pedido-item'>
+
+                                <h2>Cliente: {data.cliente}</h2>
+                                <p>Valor: R$ {data.valor}</p>
+                                <p>Status: {data.status}</p>
+                                <p>Meio de Pagamento: {data.meioPagamento}</p>
+                                <p>Delivery: {data.delivery ? 'Sim' : 'Não'}</p>
+                                <h3>Pedido:</h3>
+                                <ul>
+                                    {data.pedido && data.pedido.map((item, index) => (
+                                        <li key={index}>{item}</li>
+                                    ))}
+                                </ul>
+
+                            </div>
+
+                        );
+                    })}
+
+            </div>
+
+            <footer>
+                © 2024 - Todos os direitos reservados.
+            </footer>
+
+    </div>
     </>
     )
 }
