@@ -1,6 +1,9 @@
 const express = require("express")
 const app = express()
 
+const cors = require("cors")
+app.use(cors())
+
 // Inicializando os Serviços de Interpretação de Body-Request e Search-Query. Importante para pegar corretamente os dados de um BODY ou SearchQuery
 app.use(express.json())
 app.use(express.urlencoded())
