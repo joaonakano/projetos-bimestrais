@@ -1,0 +1,16 @@
+span {
+    padding: 0.5rem 0.7rem;
+    border-radius: 45%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #232527;
+    color:aliceblue
+}
+
+span:hover {
+    cursor: pointer;
+    transition: 500ms;
+    background-color: #ce444462;
+
+}
