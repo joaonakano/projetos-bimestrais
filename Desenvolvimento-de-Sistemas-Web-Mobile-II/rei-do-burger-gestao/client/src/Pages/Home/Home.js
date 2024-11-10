@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import "./style.css"
+
 export default function Home() {
     const [ordersList, setOrdersList] = useState([])
 
@@ -23,7 +25,7 @@ export default function Home() {
 
                             <div key={documentID} className='pedido-item'>
 
-                                <h2>Cliente: {data.cliente}</h2>
+                                <h2 className="header-card">{data.cliente}</h2>
                                 <p>Valor: R$ {data.valor}</p>
                                 <p>Status: {data.status}</p>
                                 <p>Meio de Pagamento: {data.meioPagamento}</p>
