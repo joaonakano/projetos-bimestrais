@@ -55,7 +55,7 @@ export default function AddOrderForm() {
                 console.error("Erro ao enviar o formulário:", err)
             })
         
-        alert("Pedido cadastrado com Sucesso!")
+        alert("Pedido cadastrado com Sucesso!'")
         window.location.reload()
     }
     
