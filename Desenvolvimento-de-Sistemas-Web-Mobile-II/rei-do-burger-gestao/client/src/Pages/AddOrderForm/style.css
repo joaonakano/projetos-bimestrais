@@ -1,0 +1,39 @@
+.container-Add{
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    width: 100%;
+}
+
+.container-Add h1{
+    font-size: 2em;
+    background-color: #290909;
+    padding: 20px;
+}
+
+.grade-Add{
+    padding: 20px;
+    color: white;
+    font-size: 2em;
+}
+
+.add-form{
+    background-color: #562727;
+    padding: 25px;
+}
+
+.add-form input{
+    font-size: 1em;
+}
+
+.add-form label{
+    padding: 0 20px;
+}
+
+.add-form select{
+    font-size: 1em;;
+}
+
+.add-form button{
+    font-size: 1em;
+}
