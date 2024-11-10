@@ -4,12 +4,12 @@ import axios from "axios"
 import "./style.css"
 
 export default function AddOrderForm() {
-    const [paymentMethod, setPaymentMethod] = useState("dinheiro")
+    const [meioPagamento, setMeioPagamento] = useState("dinheiro")
     const [delivery, setDelivery] = useState(false)
     const [status, setStatus] = useState("fazer")
-    const [client, setClient] = useState("")
-    const [total, setTotal] = useState(0)
-    const [order, setOrder] = useState([])
+    const [cliente, setCliente] = useState("")
+    const [valor, setValor] = useState(0)
+    const [pedido, setPedido] = useState([])
 
     const orders = [
         {id: 1, name: "X-Burger"},
@@ -20,7 +20,7 @@ export default function AddOrderForm() {
     ]
 
     const handleOrderChange = orderName => {
-        setOrder(prevSelected => {
+        setPedido(prevSelected => {
             if(prevSelected.includes(orderName)) {
                 return prevSelected.filter(order => order !== orderName)
             } else {
@@ -32,18 +32,18 @@ export default function AddOrderForm() {
     function handleSubmit(event) {
         event.preventDefault()
         // Verifica se ao menos um pedido foi selecionado no formulario
-        if (order.length === 0) {
+        if (pedido.length === 0) {
             alert("Selecione ao menos um pedido!")
             return
         }
         
         const data = {
-            client,
-            paymentMethod,
+            cliente,
+            meioPagamento,
             delivery,
             status,
-            order,
-            total
+            pedido,
+            valor
         }
 
         // Enviando os dados coletados
@@ -70,8 +70,8 @@ export default function AddOrderForm() {
                             type="text"
                             placeholder="João Silva"
                             name="client-name"
-                            value={client}
-                            onChange={e => {setClient(e.target.value)}}
+                            value={cliente}
+                            onChange={e => {setCliente(e.target.value)}}
                             required
                         /><br/>
                         <br/>
@@ -101,8 +101,8 @@ export default function AddOrderForm() {
                         <select
                             id="payment-method"
                             name="payment-method"
-                            value={paymentMethod}
-                            onChange={e => {setPaymentMethod(e.target.value)}}
+                            value={meioPagamento}
+                            onChange={e => {setMeioPagamento(e.target.value)}}
                         >
                             <option
                                 value="cartao-credito"
@@ -116,7 +116,7 @@ export default function AddOrderForm() {
 
                             <option
                                 value="dinheiro"
-                                checked={paymentMethod === "dinheiro"}
+                                checked={meioPagamento === "dinheiro"}
                             >Dinheiro
                             </option>
 
@@ -189,8 +189,8 @@ export default function AddOrderForm() {
                             min="0"
                             step="0.01"
                             name="total"
-                            value={total}
-                            onChange={e => {setTotal(e.target.value * 1)}}
+                            value={valor}
+                            onChange={e => {setValor(e.target.value * 1)}}
                             required
                         /><br/>
                        
