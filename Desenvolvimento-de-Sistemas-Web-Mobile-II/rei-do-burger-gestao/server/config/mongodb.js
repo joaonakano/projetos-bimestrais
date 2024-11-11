@@ -19,8 +19,4 @@ const getDb = () => {
     return db;
 }
 
-const checkMongoRunning = () => {
-    return db? true: false
-}
-
 module.exports = { connectToMongo, getDb }
