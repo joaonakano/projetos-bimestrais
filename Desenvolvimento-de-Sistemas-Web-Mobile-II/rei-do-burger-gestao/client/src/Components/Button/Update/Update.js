@@ -1,9 +1,13 @@
 import "./style.css"
+import { Link } from 'react-router-dom'
 
-export default function Update() {
+export default function UpdateButton(order) {
     function updateOrders() {
-        
     }
 
-    return <button onClick={updateOrders}>Atualizar Pedidos</button>
+    return(
+        <>
+            <Link className="update-button" to={`/update/${order.id}`}>Editar Pedido</Link>
+        </>
+    )
 }
