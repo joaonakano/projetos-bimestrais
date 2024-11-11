@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import RemoveButton from '../../Components/Button/Remove/Remove'
+import UpdateButton from '../../Components/Button/Update/Update'
 import Header from "../../Components/Header/Header"
 import "./style.css"
 
@@ -44,6 +45,7 @@ export default function Home() {
 
                             <div key={documentID} className='pedido-item'>
                                 <RemoveButton id={documentID} getOrdersList={getOrdersList} updateOrdersList={updateOrdersList}/>
+                                <UpdateButton id={documentID}/>
                                 <h2 className="header-card">{data.cliente}</h2>
                                 <p>Valor: R${data.valor}</p>
                                 <p>Status: {data.status}</p>
