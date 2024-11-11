@@ -1,39 +1,212 @@
-.container-Add{
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a; 
+    color: #e0e0e0; 
+    font-family: 'Inter', sans-serif; 
+}
+
+header {
+    position: sticky;
+    top: 0;
+    width: 100%; 
+    background-color: #1a1a1a; 
+    border-bottom: 1px solid #2a2a2a;
+    padding: 20px 0; /* Increase the height of the header */
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px; /* Adjust padding to maintain spacing */
+    width: 100%; 
+}
+
+#brand-name {
+    color: #f5a623; 
+    font-size: 40px;
+    font-family: 'Righteous', sans-serif;
+}
+
+#nav-items {
+    display: flex;
+    align-items: center;
+}
+
+#nav-items a:link, #nav-items a:visited {
+    color: #e0e0e0; 
+    padding: 20px;
+}
+
+#nav-items a {
+    text-decoration: none;
+    padding: 20px;
+}
+
+#nav-items a:hover {
+    background-color: #2a2a2a; 
+    border-radius: 5px;
+    transition: background-color 1s ease;
+    color: #f5a623; 
+}
+
+/* Container styles */
+.container-pedidos, .container-Add {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content horizontally */
+}
+
+.container-pedidos h1, .container-Add h1 {
+    display: flex;
+    justify-content: center;
+    color: #f5a623; 
+    margin-bottom: 20px;
+}
+
+.grade-pedidos, .grade-Add {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+}
+
+/* Header styles */
+.header-card {
+    color: #f5a623; 
+    font-size: 1.5em;
+}
+
+/* Order item styles */
+.pedido-item, .add-form {
+    background-color: #2a2a2a; 
+    border-radius: 16px; /* More rounded corners */
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%; /* Ensure the order item takes the full width */
+    max-width: 600px; /* Increase the maximum width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    transition: transform 0.2s; /* Smooth hover effect */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the items inside */
+    position: relative; /* Add position relative */
+    border: 2px solid #f5a623; /* Add yellow border */
+}
+
+.pedido-item:hover, .add-form:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+.pedido-item h2, .add-form h2 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #f5a623; /* Accent color */
+}
+
+.pedido-item p, .add-form p {
+    margin: 5px 0;
+    font-size: 1em;
+    text-align: center; /* Center the text */
+}
+
+.pedido-item hr, .add-form hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #444;
+    margin: 10px 0;
+}
+
+.pedido-item ul, .add-form ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%; /* Ensure the list takes the full width */
+}
+
+.pedido-item ul li, .add-form ul li {
+    background-color: #3a3a3a;
+    margin: 5px 0;
+    padding: 5px 10px;
+    border-radius: 8px; /* More rounded corners */
+    text-align: center; /* Center the text */
+}
+
+/* Input styles */
+input, select {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    border-radius: 8px; /* More rounded corners */
+    padding: 10px;
+    margin: 5px 0;
     width: 100%;
 }
 
-.container-Add h1{
-    font-size: 2em;
-    background-color: #290909;
+input[type="radio"], input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+/* Button styles */
+button {
+    background-color: #f5a623; 
+    color: #1a1a1a; 
+    border: none;
+    border-radius: 8px; /* More rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+button:hover {
+    background-color: #e59400; 
+}
+
+.update-button {
+    text-decoration: none;
+    position: absolute;
+    top: 13px;
+    left: 10px;
+    background-color: #f5a623; 
+    color: #1a1a1a; 
+    border: none;
+    border-radius: 8px; /* More rounded corners */
+    padding: 5px 10px; /* Smaller padding for smaller button */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width:41%;
+}
+
+.update-button:hover {
+    background-color: #e59400; 
+}
+
+.refresh-button {
+    background-color: #f5a623; 
+    color: #1a1a1a; 
+    border: none;
+    border-radius: 8px; /* More rounded corners */
+    padding: 5px 10px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px; 
+}
+.refresh-button:hover {
+    background-color: #e59400; 
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
     padding: 20px;
-}
-
-.grade-Add{
-    padding: 20px;
-    color: white;
-    font-size: 2em;
-}
-
-.add-form{
-    background-color: #562727;
-    padding: 25px;
-}
-
-.add-form input{
-    font-size: 1em;
-}
-
-.add-form label{
-    padding: 0 20px;
-}
-
-.add-form select{
-    font-size: 1em;;
-}
-
-.add-form button{
-    font-size: 1em;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    border-top: 1px solid #2a2a2a;
 }

@@ -38,7 +38,7 @@ export default function Home() {
             <Header />
             <div className='container-pedidos'>
                 <h1>Pedidos</h1>
-                <RefreshButton handleRefresh={refreshOrders} />
+                <RefreshButton className="refresh-button" handleRefresh={refreshOrders} />
                 <div className='grade-pedidos'>
                     {ordersList.map((order) => {
                         const { documentID, data } = order;
