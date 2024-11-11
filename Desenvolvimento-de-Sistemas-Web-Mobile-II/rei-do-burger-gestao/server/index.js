@@ -12,6 +12,9 @@ app.use(express.urlencoded())
 const { initializeFirebaseApp } = require("./config/firebase")
 initializeFirebaseApp()
 
+const { connectToMongo } = require("./config/mongodb")
+connectToMongo()
+
 // Solicitando as Configurações do Servidor
 const {
     PORT,

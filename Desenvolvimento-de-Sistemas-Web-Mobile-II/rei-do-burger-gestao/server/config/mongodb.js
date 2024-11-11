@@ -1,24 +1,26 @@
-const mongoose = require("mongoose")
-mongoose.connect('mongodb://localhost:27017/rei-do-burger')
+const { MongoClient } = require("mongodb")
 
-const orders = new mongoose.Schema({
-    cliente: String,
-    delivery: Boolean,
-    meioPagamento: String,
-    pedido: Array,
-    status: String,
-    valor: Number
-})
+const url = "mongodb://localhost:27017"
+const dbName = "rei-do-burger"
 
-const Order = mongoose.model('Orders', orders)
+let db
 
-const order = new Order({
-    cliente: "Rick Rolado",
-    delivery: false,
-    meioPagamento: "pix",
-    pedido: ["X-Burger", "Hot-Dog", "Pepsi Cola"],
-    status: "fazer",
-    valor: 666.66
-})
+const connectToMongo = async () => {
+    const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true })
+    await client.connect()
+    console.log("-> MongoDB initialized successfully!")
+    db = client.db(dbName)
+}
 
-order.save()
+const getDb = () => {
+    if (!db) {
+        throw new Error("Database not initialized. Call connectToMongo first.");
+    }
+    return db;
+}
+
+const checkMongoRunning = () => {
+    return db? true: false
+}
+
+module.exports = { connectToMongo, getDb }

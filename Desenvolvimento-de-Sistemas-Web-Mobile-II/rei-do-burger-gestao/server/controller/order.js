@@ -1,4 +1,5 @@
 const orderModel = require("../model/order")
+
 module.exports = {
     // R(EAD)- Ler todos os documentos do Firestore na coleção "Pedidos" 
     getAllOrders: async (req, res) => {
