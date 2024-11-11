@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from 'axios'
 
-import RemoveButton from '../../Components/Button/Remove/Remove';
-import UpdateButton from '../../Components/Button/Update/Update';
-import Header from "../../Components/Header/Header";
-import "./style.css";
+import RemoveButton from '../../Components/Button/Remove/Remove'
+import UpdateButton from '../../Components/Button/Update/Update'
+import RefreshButton from '../../Components/Button/Refresh/Refresh'
+
+import Header from "../../Components/Header/Header"
+import "./style.css"
 
 export default function Home() {
     const [ordersList, setOrdersList] = useState([]);
@@ -16,12 +18,12 @@ export default function Home() {
             });
     }, []);
 
-    useEffect(() => {
+    function refreshOrders() {
         axios.get('http://localhost:8000/api/get/all')
-            .then((res) => {
-                setOrdersList(res.data);
-            });
-    }, [ordersList]);
+        .then((res) => {
+            setOrdersList(res.data);
+        });
+    }
 
     function updateOrdersList(newListData) {
         setOrdersList(newListData);
@@ -36,6 +38,7 @@ export default function Home() {
             <Header />
             <div className='container-pedidos'>
                 <h1>Pedidos</h1>
+                <RefreshButton handleRefresh={refreshOrders} />
                 <div className='grade-pedidos'>
                     {ordersList.map((order) => {
                         const { documentID, data } = order;
