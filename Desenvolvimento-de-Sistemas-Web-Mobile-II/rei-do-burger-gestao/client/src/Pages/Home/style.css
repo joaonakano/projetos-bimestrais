@@ -91,6 +91,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center the items inside */
+    position: relative; /* Add position relative */
 }
 
 .pedido-item:hover {
@@ -142,6 +143,24 @@ button {
 }
 
 button:hover {
+    background-color: #e59400; 
+}
+
+.update-button {
+    text-decoration: none;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #f5a623; 
+    color: #1a1a1a; 
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.update-button:hover {
     background-color: #e59400; 
 }
 
