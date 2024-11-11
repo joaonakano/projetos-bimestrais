@@ -17,9 +17,10 @@ export default function Home() {
     return(
     <>
     <div className='container-pedidos'>
-            <h1>Pedidos</h1>    
+              
             <Header />
 
+            <h1>Pedidos</h1>
             <div className='grade-pedidos'>
                     {ordersList.map((order) => {
                         const { documentID, data } = order;
