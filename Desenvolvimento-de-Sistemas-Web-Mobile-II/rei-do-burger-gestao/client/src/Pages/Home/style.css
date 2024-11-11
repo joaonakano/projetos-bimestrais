@@ -1,88 +1,112 @@
 * {
-    box-sizing: border-box; /* Aplica box-sizing para garantir que o padding e as bordas não afetem a largura e altura */
-    margin:0;
-    padding:0;
-  }
-
-  body {
-    background: url(../../assets/img/background.png);
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}   
-
-.container-pedidos {
-    
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    width: 100%;
-}
-
-/* Estilo do título */
-.container-pedidos h1 {
-    font-size: 2em;
-    background-color: #290909;
-    padding: 20px;
-}
-
-/* Configuração da grade para 3 colunas */
-.grade-pedidos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas de largura igual */
-    gap: 20px; /* Espaçamento entre as células */
-    padding: 10px;
-    max-width: 1200px; /* Largura máxima da grade */
-    margin: 0 auto; /* Centraliza a grade */
-    width: 100%;
-}
-
-/* Estilo para cada item de pedido */
-.pedido-item {
-    background-color: #562727;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    height: 100%; /* Garante que o item ocupe toda a altura da célula */
-    box-sizing: border-box;
-    position: relative;
-}
-
-/* Ajuste nos títulos */
-.pedido-item h2, .pedido-item h3 {
-    margin-top: 0;
-}
-
-/* Estilos para os parágrafos */
-.pedido-item p {
-    margin: 20px 0;
-}
-
-/* Remove as bolinhas da lista interna */
-.pedido-item ul {
-    list-style: none;
     padding: 0;
-    font-size: 20px;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.pedido-item p{
-    font-size: 20px;
+body {
+    background-color: #1a1a1a; 
+    color: #e0e0e0; 
+    font-family: 'Inter', sans-serif; 
 }
 
-footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    margin-top: 2.5rem;
+header {
+    position: sticky;
+    top: 0;
+    width: 100%; 
+    background-color: #1a1a1a; 
+    border-bottom: 1px solid #2a2a2a;
+    padding: 20px 0; /* Increase the height of the header */
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px; /* Adjust padding to maintain spacing */
+    width: 100%; 
+}
+
+#brand-name {
+    color: #f5a623; 
+    font-size: 40px;
+    font-family: 'Righteous', sans-serif;
+}
+
+#nav-items {
+    display: flex;
+    align-items: center;
+}
+
+#nav-items a:link, #nav-items a:visited {
+    color: #e0e0e0; 
     padding: 20px;
-    background-color: #290909;
 }
 
-/* Responsividade para telas menores */
-@media (max-width: 720px) {
-  .grade-pedidos {
-    grid-template-columns: 1fr; /* Em telas pequenas, exibe em uma coluna */
-  }
+#nav-items a {
+    text-decoration: none;
+    padding: 20px;
+}
+
+#nav-items a:hover {
+    background-color: #2a2a2a; 
+    border-radius: 5px;
+    transition: background-color 1s ease;
+    color: #f5a623; 
+}
+
+/* Container styles */
+.container-pedidos {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content horizontally */
+}
+
+.grade-pedidos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content horizontally */
+}
+
+/* Header styles */
+.header-card {
+    color: #f5a623; 
+    font-size: 1.5em;
+}
+
+/* Order item styles */
+.pedido-item {
+    background-color: #2a2a2a; 
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 100%; /* Ensure the order item takes the full width */
+    max-width: 600px; /* Limit the maximum width */
+}
+
+/* Button styles */
+button {
+    background-color: #f5a623; 
+    color: #1a1a1a; 
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e59400; 
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    border-top: 1px solid #2a2a2a;
 }
