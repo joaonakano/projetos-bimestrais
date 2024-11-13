@@ -1,4 +1,18 @@
-const orderModel = require("../model/order")
+const { databaseName } = require("../config/server")
+
+let orderModel
+
+switch(databaseName) {
+    case "firebase":
+        orderModel = require("../model/Firebase")
+        break
+    case "mongodb":
+        orderModel = require("../model/Mongo")
+        break
+    default:
+        console.error("No database was found running!")
+        break
+}
 
 module.exports = {
     // R(EAD)- Ler todos os documentos do Firestore na coleção "Pedidos" 
@@ -21,7 +35,7 @@ module.exports = {
     // C(REATE) - Criar um documento na coleção "Pedidos" do Firestore
     createOrder: async (req, res) => {
         let data = req.body
-        const uploadData = await orderModel.createDocument(data, "pedidos")
+        await orderModel.createDocument(data, "pedidos")
         res.type("text/html")
         res.send("Pedido criado com sucesso!")
     },
@@ -29,7 +43,7 @@ module.exports = {
     // D(ELETE) - Remover um documento na coleção "Pedidos" do Firestore
     deleteOrder: async (req, res) => {
         let documentID = req.params.id
-        const deleteData = await orderModel.deleteDocument(documentID, "pedidos")
+        await orderModel.deleteDocument(documentID, "pedidos")
         res.type("text/html")
         res.send("Pedido removido com sucesso!")
     },
@@ -38,7 +52,7 @@ module.exports = {
     updateOrder: async (req, res) => {
         let documentID = req.params.id,
             data = req.body
-        const updateData = await orderModel.updateDocument(documentID, "pedidos", data)
+        await orderModel.updateDocument(documentID, "pedidos", data)
         res.type("text/html")
         res.send("Pedido atualizado com sucesso!")
     }
