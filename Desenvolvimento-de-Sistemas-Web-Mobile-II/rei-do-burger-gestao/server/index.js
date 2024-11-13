@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 
+// Importando e Utilizando o CORS para lidar com requisições de um outro domínio
 const cors = require("cors")
 app.use(cors())
 
@@ -8,18 +9,33 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded())
 
-// Inicializando o Serviço do Firebase
-const { initializeFirebaseApp } = require("./config/firebase")
-initializeFirebaseApp()
-
-const { connectToMongo } = require("./config/mongodb")
-connectToMongo()
-
 // Solicitando as Configurações do Servidor
 const {
     PORT,
-    hostUrl
+    hostUrl,
+    databaseName
 } = require("./config/server")
+
+// Importando o inicializador do Firebase e do MongoDB
+const { initializeFirebaseApp } = require("./config/firebase")
+const { connectToMongo } = require("./config/mongodb")
+
+const initializeDatabase = () => {
+    switch (databaseName) {
+        case "firebase": 
+            initializeFirebaseApp()
+            break
+        case "mongodb":
+            connectToMongo()
+            break
+        default:
+            console.error("Was not possible to initialize an available database!")
+            break
+    }
+}
+
+// Inicializando o servidor apropriado com base no nome definido na config
+initializeDatabase()
 
 // Importando as Rotas
 const orders = require("./routes/order")

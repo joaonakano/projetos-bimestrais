@@ -72,7 +72,7 @@ export default function Update() {
             .then(res => {
                 console.log(res)
                 alert("Pedido atualizado com Sucesso!");
-                window.location.reload();
+                window.location.href="/";
             })
             .catch(err => {
                 console.error("Erro ao enviar o formulário:", err)

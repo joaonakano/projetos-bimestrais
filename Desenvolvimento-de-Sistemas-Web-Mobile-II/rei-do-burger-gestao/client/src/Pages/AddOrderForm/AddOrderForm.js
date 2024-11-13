@@ -56,7 +56,7 @@ export default function AddOrderForm() {
             });
 
         alert("Pedido cadastrado com Sucesso!");
-        window.location.reload();
+        window.location.href="/";
     }
 
     return (
