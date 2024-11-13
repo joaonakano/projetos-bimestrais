@@ -1,62 +1,5 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #1a1a1a; 
-    color: #e0e0e0; 
-    font-family: 'Inter', sans-serif; 
-}
-
-header {
-    position: sticky;
-    top: 0;
-    width: 100%; 
-    background-color: #1a1a1a; 
-    border-bottom: 1px solid #2a2a2a;
-    padding: 20px 0; /* Increase the height of the header */
-}
-
-.nav-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px; /* Adjust padding to maintain spacing */
-    width: 100%; 
-}
-
-#brand-name {
-    color: #f5a623; 
-    font-size: 40px;
-    font-family: 'Righteous', sans-serif;
-}
-
-#nav-items {
-    display: flex;
-    align-items: center;
-}
-
-#nav-items a:link, #nav-items a:visited {
-    color: #e0e0e0; 
-    padding: 20px;
-}
-
-#nav-items a {
-    text-decoration: none;
-    padding: 20px;
-}
-
-#nav-items a:hover {
-    background-color: #2a2a2a; 
-    border-radius: 5px;
-    transition: background-color 1s ease;
-    color: #f5a623; 
-}
-
-/* Container styles */
-.container-pedidos, .container-Add {
+/* AddOrderForm specific styles */
+.add-order-container {
     padding: 20px;
     margin: 0 auto;
     max-width: 800px;
@@ -65,27 +8,20 @@ header {
     align-items: center; /* Center the content horizontally */
 }
 
-.container-pedidos h1, .container-Add h1 {
+.add-order-container h1 {
     display: flex;
     justify-content: center;
     color: #f5a623; 
     margin-bottom: 20px;
 }
 
-.grade-pedidos, .grade-Add {
+.add-order-grade {
     width: 100%;
     display: flex;
     justify-content: center; /* Center the content horizontally */
 }
 
-/* Header styles */
-.header-card {
-    color: #f5a623; 
-    font-size: 1.5em;
-}
-
-/* Order item styles */
-.pedido-item, .add-form {
+.add-order-form {
     background-color: #2a2a2a; 
     border-radius: 16px; /* More rounded corners */
     padding: 20px;
@@ -101,36 +37,36 @@ header {
     border: 2px solid #f5a623; /* Add yellow border */
 }
 
-.pedido-item:hover, .add-form:hover {
+.add-order-form:hover {
     transform: scale(1.02); /* Slightly enlarge on hover */
 }
 
-.pedido-item h2, .add-form h2 {
+.add-order-form h2 {
     margin-bottom: 10px;
     font-size: 1.5em;
     color: #f5a623; /* Accent color */
 }
 
-.pedido-item p, .add-form p {
+.add-order-form p {
     margin: 5px 0;
     font-size: 1em;
     text-align: center; /* Center the text */
 }
 
-.pedido-item hr, .add-form hr {
+.add-order-form hr {
     width: 100%;
     border: 0;
     border-top: 1px solid #444;
     margin: 10px 0;
 }
 
-.pedido-item ul, .add-form ul {
+.add-order-form ul {
     list-style-type: none;
     padding: 0;
     width: 100%; /* Ensure the list takes the full width */
 }
 
-.pedido-item ul li, .add-form ul li {
+.add-order-form ul li {
     background-color: #3a3a3a;
     margin: 5px 0;
     padding: 5px 10px;
@@ -139,7 +75,7 @@ header {
 }
 
 /* Input styles */
-input, select {
+.add-order-form input, .add-order-form select {
     background-color: #3a3a3a;
     color: #e0e0e0;
     border: 1px solid #444;
@@ -149,13 +85,63 @@ input, select {
     width: 100%;
 }
 
-input[type="radio"], input[type="checkbox"] {
-    width: auto;
+.add-order-form input[type="radio"], .add-order-form input[type="checkbox"] {
+    display: none; /* Hide the default radio and checkbox buttons */
+}
+
+/* Custom radio and checkbox styles */
+.add-order-form input[type="radio"] + label, .add-order-form input[type="checkbox"] + label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
     margin-right: 10px;
+    position: relative;
+    padding-left: 25px; /* Add space for custom styles */
+}
+
+.add-order-form input[type="radio"] + label::before, .add-order-form input[type="checkbox"] + label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f5a623;
+    background-color: #3a3a3a;
+    transition: background-color 0.3s ease;
+}
+
+.add-order-form input[type="radio"] + label::before {
+    border-radius: 50%; /* Rounded corners for radio buttons */
+}
+
+.add-order-form input[type="checkbox"] + label::before {
+    border-radius: 4px; /* Square corners for checkboxes */
+}
+
+.add-order-form input[type="radio"]:checked + label::before, .add-order-form input[type="checkbox"]:checked + label::before {
+    background-color: #f5a623;
+}
+
+.add-order-form input[type="radio"]:checked + label::after, .add-order-form input[type="checkbox"]:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    background-color: #1a1a1a;
+}
+
+.add-order-form input[type="radio"]:checked + label::after {
+    border-radius: 50%; /* Rounded corners for radio buttons */
+}
+
+.add-order-form input[type="checkbox"]:checked + label::after {
+    border-radius: 2px; /* Square corners for checkboxes */
 }
 
 /* Button styles */
-button {
+.add-order-form button {
     background-color: #f5a623; 
     color: #1a1a1a; 
     border: none;
@@ -165,40 +151,7 @@ button {
     margin: 5px 0;
 }
 
-button:hover {
-    background-color: #e59400; 
-}
-
-.update-button {
-    text-decoration: none;
-    position: absolute;
-    top: 13px;
-    left: 10px;
-    background-color: #f5a623; 
-    color: #1a1a1a; 
-    border: none;
-    border-radius: 8px; /* More rounded corners */
-    padding: 5px 10px; /* Smaller padding for smaller button */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width:41%;
-}
-
-.update-button:hover {
-    background-color: #e59400; 
-}
-
-.refresh-button {
-    background-color: #f5a623; 
-    color: #1a1a1a; 
-    border: none;
-    border-radius: 8px; /* More rounded corners */
-    padding: 5px 10px; 
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 20px; 
-}
-.refresh-button:hover {
+.add-order-form button:hover {
     background-color: #e59400; 
 }
 

@@ -61,10 +61,10 @@ export default function AddOrderForm() {
 
     return (
         <>
-            <div className="container-Add">
+            <div className="add-order-container">
                 <h1>Adicionar Pedido</h1>
-                <div className="grade-Add">
-                    <form className="add-form" onSubmit={handleSubmit}>
+                <div className="add-order-grade">
+                    <form className="add-order-form" onSubmit={handleSubmit}>
                         <label>Cliente:</label><br />
                         <input
                             type="text"
@@ -171,13 +171,14 @@ export default function AddOrderForm() {
                         <label>Pedido:</label><br />
                         {
                             orders.map(order => (
-                                <label key={order.id}>
+                                <div key={order.id}>
                                     <input
                                         type="checkbox"
+                                        id={`pedido-${order.id}`}
                                         onChange={() => { handleOrderChange(order.name) }}
                                     />
-                                    {order.name}
-                                </label>
+                                    <label htmlFor={`pedido-${order.id}`}>{order.name}</label>
+                                </div>
                             ))
                         }<br />
                         <br />
