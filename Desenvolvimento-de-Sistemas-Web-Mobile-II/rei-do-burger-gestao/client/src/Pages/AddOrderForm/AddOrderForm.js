@@ -6,7 +6,7 @@ import "./style.css";
 export default function AddOrderForm() {
     const [meioPagamento, setMeioPagamento] = useState("dinheiro");
     const [delivery, setDelivery] = useState(false);
-    const [status, setStatus] = useState("fazer");
+    const [status, setStatus] = useState([]);
     const [cliente, setCliente] = useState("");
     const [valor, setValor] = useState(0);
     const [pedido, setPedido] = useState([]);
@@ -19,12 +19,28 @@ export default function AddOrderForm() {
         { id: 5, name: "Pepsi" }
     ];
 
+    const statuses = [
+        { id: 1, name: "A Fazer" },
+        { id: 2, name: "Em Andamento" },
+        { id: 3, name: "Concluído" }
+    ];
+
     const handleOrderChange = orderName => {
         setPedido(prevSelected => {
             if (prevSelected.includes(orderName)) {
                 return prevSelected.filter(order => order !== orderName);
             } else {
                 return [...prevSelected, orderName];
+            }
+        });
+    };
+
+    const handleStatusChange = statusName => {
+        setStatus(prevSelected => {
+            if (prevSelected.includes(statusName)) {
+                return prevSelected.filter(status => status !== statusName);
+            } else {
+                return [...prevSelected, statusName];
             }
         });
     };
@@ -127,44 +143,18 @@ export default function AddOrderForm() {
                         <br />
                         <div>
                             <label>Status:</label><br />
-                            <label>
-                                <input
-                                    type="radio"
-                                    id="fazer"
-                                    name="status-options"
-                                    value="fazer"
-                                    onChange={e => { setStatus(e.target.value) }}
-                                    checked={status === "fazer"}
-                                    required
-                                />
-                                A Fazer
-                            </label>
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    id="andamento"
-                                    name="status-options"
-                                    value="andamento"
-                                    onChange={e => { setStatus(e.target.value) }}
-                                    checked={status === "andamento"}
-                                    required
-                                />
-                                Em Andamento
-                            </label>
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    id="concluido"
-                                    name="status-options"
-                                    value="concluido"
-                                    onChange={e => { setStatus(e.target.value) }}
-                                    checked={status === "concluido"}
-                                    required
-                                />
-                                Concluído
-                            </label><br />
+                            {
+                                statuses.map(status => (
+                                    <div key={status.id}>
+                                        <input
+                                            type="checkbox"
+                                            id={`status-${status.id}`}
+                                            onChange={() => { handleStatusChange(status.name) }}
+                                        />
+                                        <label htmlFor={`status-${status.id}`}>{status.name}</label>
+                                    </div>
+                                ))
+                            }<br />
                         </div>
                         <br />
 

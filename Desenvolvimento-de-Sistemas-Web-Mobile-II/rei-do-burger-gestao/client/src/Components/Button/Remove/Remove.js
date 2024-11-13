@@ -22,7 +22,7 @@ export default function RemoveButton({ id, getOrdersList, updateOrdersList }) {
 
     return(
         <>
-            {isModalOpen?
+            {isModalOpen ?
                 <ConfirmationModal 
                     isOpen={isModalOpen}
                     onClose={() => setIsModalOpen(false)}
