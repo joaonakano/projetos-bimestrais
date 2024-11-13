@@ -32,7 +32,6 @@ export default function Update() {
         
     }, [])
 
-
     const orders = [
         {id: 1, name: "X-Burger"},
         {id: 2, name: "X-Salada"},
@@ -78,14 +77,13 @@ export default function Update() {
                 console.error("Erro ao enviar o formulário:", err)
             })   
     }
-    
 
     return(
         <>
-            <div className="container-Add">
+            <div className="add-order-container">
                 <h1>Editar Pedido</h1>
-                <div className="grade-Add">
-                    <form className="add-form" onSubmit={handleSubmit}>
+                <div className="add-order-grade">
+                    <form className="add-order-form" onSubmit={handleSubmit}>
                         <label>Cliente:</label><br/>
                         <input
                             type="text"
@@ -105,8 +103,8 @@ export default function Update() {
                             onChange={e => {setFormData({...formData, delivery: false})}}
                             checked={formData.delivery === false}
                             required
-                            />
-                        <label for="nao"> Não</label>
+                        />
+                        <label htmlFor="nao"> Não</label>
                         <input
                             type="radio"
                             id="sim"
@@ -116,7 +114,7 @@ export default function Update() {
                             checked={formData.delivery === true}
                             required
                         />
-                        <label for="sim"> Sim</label><br/>
+                        <label htmlFor="sim"> Sim</label><br/>
                         <br/>
                         <label>Meio de Pagamento:</label>
                         <select
@@ -133,7 +131,7 @@ export default function Update() {
                         <br/>
                         <div>
                             <label>Status:</label><br/>
-                            <label> {/* Coloquei o LABEL acima do INPUT para o usuario selecionar a opcao clicando no texto, nao somente na bolinha, se aparecer algum conflito, considere mover o LABEL para BAIXO do INPUT */}
+                            <label>
                                 <input
                                     type="radio"
                                     id="fazer"
@@ -142,7 +140,7 @@ export default function Update() {
                                     onChange={e => {setFormData({...formData, status: e.target.value})}}
                                     checked={formData.status === "fazer"}
                                     required
-                                    />
+                                />
                                 A Fazer
                             </label>
 
@@ -155,7 +153,7 @@ export default function Update() {
                                     onChange={e => {setFormData({...formData, status: e.target.value})}}
                                     checked={formData.status === "andamento"}
                                     required
-                                    />
+                                />
                                 Em Andamento
                             </label>
 
@@ -177,14 +175,15 @@ export default function Update() {
                         <label>Pedido:</label><br/>
                         {
                             orders.map(order => (
-                                <label key={order.id}>
+                                <div key={order.id}>
                                     <input
                                         type="checkbox"
+                                        id={`pedido-${order.id}`}
                                         onChange={() => {handleOrderChange(order.name)}}
                                         checked={formData.pedido.includes(order.name)}
                                     />
-                                    {order.name}
-                                </label>
+                                    <label htmlFor={`pedido-${order.id}`}>{order.name}</label>
+                                </div>
                             ))
                         }<br/>
                         <br/>
@@ -207,7 +206,7 @@ export default function Update() {
                 </div>
 
                 <footer>
-                © 2024 - Todos os direitos reservados.
+                    © 2024 - Todos os direitos reservados.
                 </footer>
 
             </div>

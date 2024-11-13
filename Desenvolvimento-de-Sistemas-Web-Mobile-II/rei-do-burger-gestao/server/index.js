@@ -9,6 +9,16 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded())
 
+<<<<<<< HEAD
+=======
+// Inicializando o Serviço do Firebase
+const { initializeFirebaseApp } = require("./config/firebase")
+initializeFirebaseApp()
+
+// const { connectToMongo } = require("./config/mongodb")
+// connectToMongo()
+
+>>>>>>> 4b223c1e349464c4aaebcdceeca5856ad2470795
 // Solicitando as Configurações do Servidor
 const {
     PORT,
