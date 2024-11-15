@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios'
+import axiosInstance from '../../Utils/AxiosInstance'
 
 import RemoveButton from '../../Components/Button/Remove/Remove'
 import UpdateButton from '../../Components/Button/Update/Update'
@@ -9,28 +9,35 @@ import Header from "../../Components/Header/Header"
 import "./style.css"
 
 export default function Home() {
-    const [ordersList, setOrdersList] = useState([]);
+    const [ordersList, setOrdersList] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/get/all')
-            .then((res) => {
-                setOrdersList(res.data);
-            });
+        getAllOrders()
     }, []);
 
-    function refreshOrders() {
-        axios.get('http://localhost:8000/api/get/all')
+    function getAllOrders() {
+        // SINGLETON - axiosInstance
+        axiosInstance.get('/get/all')
         .then((res) => {
             setOrdersList(res.data);
         });
     }
 
-    function updateOrdersList(newListData) {
-        setOrdersList(newListData);
+    function sendDeleteRequest(orderID) {
+        // SINGLETON - axiosInstance
+        axiosInstance.delete(`/delete/${orderID}`)
+            .then(res => console.log(res))
     }
 
-    function getOrdersList() {
-        return ordersList;
+    function handleRemoveOrder(orderID) {
+        sendDeleteRequest(orderID)
+        // Cria uma nova lista de pedidos removendo um pedido indesejado especificado
+        const newOrdersList = ordersList.filter(item => item.documentID !== orderID)
+        updateOrdersList(newOrdersList)
+    }
+
+    function updateOrdersList(newListData) {
+        setOrdersList(newListData);
     }
 
     return (
@@ -38,13 +45,13 @@ export default function Home() {
             <Header />
             <div className='container-pedidos'>
                 <h1>Pedidos</h1>
-                <RefreshButton className="refresh-button" handleRefresh={refreshOrders} />
+                <RefreshButton className="refresh-button" handleRefresh={getAllOrders} />
                 <div className='grade-pedidos'>
                     {ordersList.map((order) => {
                         const { documentID, data } = order;
                         return (
                             <div key={documentID} className='pedido-item'>
-                                <RemoveButton id={documentID} getOrdersList={getOrdersList} updateOrdersList={updateOrdersList} />
+                                <RemoveButton handleRemoveOrder={() => handleRemoveOrder(documentID)}/>
                                 <UpdateButton id={documentID} />
                                 <h2 className="header-card">{data.cliente}</h2>
                                 <hr />

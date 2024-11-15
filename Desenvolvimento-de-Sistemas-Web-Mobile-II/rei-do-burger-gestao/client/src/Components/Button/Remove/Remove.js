@@ -1,24 +1,10 @@
+import { useState } from "react"
 import "./style.css"
-import ConfirmationModal from '../../Modal/Confirmation/Confirmation';
-import { useState } from 'react'
-import axios from 'axios'
 
-export default function RemoveButton({ id, getOrdersList, updateOrdersList }) {
+import ConfirmationModal from '../../Modal/Confirmation/Confirmation'
+
+export default function RemoveButton({ handleRemoveOrder}) {
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const orderID = id
-    const ordersList = getOrdersList()
-
-    function sendDeleteRequest() {
-        axios.delete(`http://localhost:8000/api/delete/${orderID}`)
-            .then(res => console.log(res))
-    }
-
-    function handleRemoveOrder() {
-        sendDeleteRequest()
-        const newOrdersList = ordersList.filter(item => item.documentID !== orderID)
-        updateOrdersList(newOrdersList)
-        setIsModalOpen(false)
-    }
 
     return(
         <>
@@ -26,7 +12,10 @@ export default function RemoveButton({ id, getOrdersList, updateOrdersList }) {
                 <ConfirmationModal 
                     isOpen={isModalOpen}
                     onClose={() => setIsModalOpen(false)}
-                    onConfirm={handleRemoveOrder}
+                    onConfirm={() => {
+                        handleRemoveOrder()
+                        setIsModalOpen(false)
+                    }}
                     message="Deseja confirmar a operação?"
                 />
                 : null

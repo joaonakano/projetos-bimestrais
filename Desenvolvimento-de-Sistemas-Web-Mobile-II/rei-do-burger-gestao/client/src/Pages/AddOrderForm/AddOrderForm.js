@@ -1,15 +1,15 @@
 import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "../../Utils/AxiosInstance"
 
 import "./style.css";
 
 export default function AddOrderForm() {
-    const [meioPagamento, setMeioPagamento] = useState("dinheiro");
-    const [delivery, setDelivery] = useState(false);
-    const [status, setStatus] = useState([]);
-    const [cliente, setCliente] = useState("");
-    const [valor, setValor] = useState(0);
-    const [pedido, setPedido] = useState([]);
+    const [meioPagamento, setMeioPagamento] = useState("dinheiro")
+    const [delivery, setDelivery] = useState(false)
+    const [status, setStatus] = useState([])
+    const [cliente, setCliente] = useState("")
+    const [valor, setValor] = useState(0)
+    const [pedido, setPedido] = useState([])
 
     const orders = [
         { id: 1, name: "X-Burger" },
@@ -25,32 +25,46 @@ export default function AddOrderForm() {
         { id: 3, name: "Concluído" }
     ];
 
+    const sendPostRequest = data => {
+        // SINGLETON - axiosInstance
+        axiosInstance.post("/create", data)
+            .then(res => {
+                console.log(res)
+                alert("Pedido cadastrado com Sucesso!")
+            })
+            .catch(err => {
+                console.error("Erro ao enviar o formulário:", err)
+            });
+    }
+
     const handleOrderChange = orderName => {
+        // Valida se algum pedido já armazenado conflita com um pedido a ser adicionado
         setPedido(prevSelected => {
             if (prevSelected.includes(orderName)) {
-                return prevSelected.filter(order => order !== orderName);
+                return prevSelected.filter(order => order !== orderName)
             } else {
-                return [...prevSelected, orderName];
+                return [...prevSelected, orderName]
             }
         });
     };
 
     const handleStatusChange = statusName => {
+        // Valida se algum status já armazenado conflita com um status a ser adicionado
         setStatus(prevSelected => {
             if (prevSelected.includes(statusName)) {
-                return prevSelected.filter(status => status !== statusName);
+                return prevSelected.filter(status => status !== statusName)
             } else {
-                return [...prevSelected, statusName];
+                return [...prevSelected, statusName]
             }
         });
     };
 
-    function handleSubmit(event) {
+    const handleSubmit = event => {
         event.preventDefault();
         // Verifica se ao menos um pedido foi selecionado no formulario
         if (pedido.length === 0) {
-            alert("Selecione ao menos um pedido!");
-            return;
+            alert("Selecione ao menos um pedido!")
+            return
         }
 
         const data = {
@@ -61,18 +75,10 @@ export default function AddOrderForm() {
             pedido,
             valor
         };
-
-        // Enviando os dados coletados
-        axios.post("http://localhost:8000/api/create", data)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                console.error("Erro ao enviar o formulário:", err);
-            });
-
-        alert("Pedido cadastrado com Sucesso!");
-        window.location.href="/";
+        
+        // Enviar uma requisição de POST para o servidor com os dados já formatados
+        sendPostRequest(data)
+        window.location.href="/"
     }
 
     return (

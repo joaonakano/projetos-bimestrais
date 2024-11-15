@@ -1,10 +1,14 @@
-import "./style.css"
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
+
+import axiosInstance from "../../Utils/AxiosInstance"
+
+import "./style.css"
 
 export default function Update() {
+    // Armazena o ID do Pedido vindo da URL
     const { id } = useParams()
+    const orderID = id
     
     const [formData, setFormData] = useState({
         meioPagamento: "dinheiro",
@@ -16,9 +20,23 @@ export default function Update() {
     })
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/get/'+id)
+        sendGetRequestForSpecificOrder(orderID)        
+    }, [])
+
+    const orders = [
+        {id: 1, name: "X-Burger"},
+        {id: 2, name: "X-Salada"},
+        {id: 3, name: "Hotdog"},
+        {id: 4, name: "Coca-Cola"},
+        {id: 5, name: "Pepsi"}
+    ]
+
+    const sendGetRequestForSpecificOrder = orderID => {
+        // SINGLETON - axiosInstance
+        axiosInstance.get(`/get/${orderID}`)
             .then(res => {
                 const fetchedData = res.data[0].data
+                // Atualiza o estado do FormData com os dados recebidos pela requisição enviada
                 setFormData({
                     meioPagamento: fetchedData.meioPagamento,
                     delivery: fetchedData.delivery,
@@ -29,16 +47,19 @@ export default function Update() {
                 })
             })
             .catch(err => console.error(err))
-        
-    }, [])
+    }
 
-    const orders = [
-        {id: 1, name: "X-Burger"},
-        {id: 2, name: "X-Salada"},
-        {id: 3, name: "Hotdog"},
-        {id: 4, name: "Coca-Cola"},
-        {id: 5, name: "Pepsi"}
-    ]
+    const sendPostRequest = data => {
+        // SINGLETON - axiosInstance
+        axiosInstance.post(`/update/${orderID}`, data)
+        .then(res => {
+            console.log(res)
+            alert("Pedido atualizado com Sucesso!")
+        })
+        .catch(err => {
+            console.error("Erro ao enviar o formulário:", err)
+        })   
+    }
 
     const handleOrderChange = orderName => {
         setFormData(prevData => {
@@ -67,15 +88,8 @@ export default function Update() {
         }
 
         // Enviando os dados coletados
-        axios.post(`http://localhost:8000/api/update/${id}`, data)
-            .then(res => {
-                console.log(res)
-                alert("Pedido atualizado com Sucesso!");
-                window.location.href="/";
-            })
-            .catch(err => {
-                console.error("Erro ao enviar o formulário:", err)
-            })   
+        sendPostRequest(data)
+        window.location.href="/"
     }
 
     return(
