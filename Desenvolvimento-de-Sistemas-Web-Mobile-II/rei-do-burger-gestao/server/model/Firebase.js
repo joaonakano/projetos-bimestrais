@@ -1,6 +1,7 @@
 // Importando e executando a função de recuperar a database do Firestore
-const { getDb } = require("../config/firebase")
+const { getDb, getAuth } = require("../config/firebase")
 let db = getDb()
+let auth = getAuth()
 
 // Função que retorna todos os documentos de uma coleção da database
 const fetchAllDocuments = async (desiredCollection) => {
@@ -72,8 +73,18 @@ const updateDocument = async (documentID, desiredCollection, data) => {
         doc
     
     docRef = db.collection(desiredCollection)
-    doc = await docRef.doc(documentID).update(data)
+    doc = await docRef.doc(documentID).update(dataToUpdate)
     return doc
 }
 
-module.exports = { fetchDocument, fetchAllDocuments, createDocument, deleteDocument, updateDocument }
+// Função que valida se um token de login é valido
+const verifyIdToken = async (idToken) => {
+    try {
+        const decodedToken = await auth.verifyIdToken(idToken)
+        return decodedToken
+    } catch {
+        throw new Error("Token verification failed.")
+    }
+}
+
+module.exports = { fetchDocument, fetchAllDocuments, createDocument, deleteDocument, updateDocument, verifyIdToken}

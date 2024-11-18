@@ -1,9 +1,26 @@
 const express = require("express")
 const app = express()
 
+// Configuração das variaveis de ambiente
+require("dotenv").config()
+
+const session = require("express-session")
+const cookieParser = require("cookie-parser")
+
+app.use(cookieParser())
+app.use(session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false, httpOnly: true }
+}))
+
 // Importando e Utilizando o CORS para lidar com requisições de um outro domínio
 const cors = require("cors")
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true
+}))
 
 // Inicializando os Serviços de Interpretação de Body-Request e Search-Query. Importante para pegar corretamente os dados de um BODY ou SearchQuery
 app.use(express.json())

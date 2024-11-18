@@ -31,6 +31,9 @@ export default function Register() {
                 <label>Senha:</label><br/>
                 <input type="password" placeholder="Digite sua senha" value={password} onChange={e => setPassword(e.target.value)} required/><br/><br/>
                 <div>
+                    <p>Se tiver uma conta, faça o <a href="/login">login</a></p>
+                </div>
+                <div>
                     {error && <p>{error}</p>}
                 </div>
                 <button type="submit">Registrar</button>

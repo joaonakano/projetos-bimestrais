@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth" 
 import { auth } from "../../Utils/Firebase"
 
+import axiosInstance from "../../Utils/AxiosInstance"
+
 import "./style.css"
 
 export default function Login() {
@@ -13,12 +15,16 @@ export default function Login() {
         e.preventDefault()
 
         try {
-            await signInWithEmailAndPassword(auth, email, password)
+            const userCredential = await signInWithEmailAndPassword(auth, email, password)
+            const idToken = await userCredential.user.getIdToken()
+            
+            await axiosInstance.post("/login", { idToken }, { withCredentials: true})
+
             setError('')
             alert('Login feito com Sucesso!')
             window.location.href='/'
         } catch (err) {
-            setError(err.message)
+            setError("O Login falhou: " + err.message)
         }
     }
     
@@ -30,6 +36,9 @@ export default function Login() {
                 <input type="text" placeholder="Digite seu e-mail" value={email} onChange={e => {setEmail(e.target.value)}} required></input><br/><br/>
                 <label>Senha:</label><br/>
                 <input type="password" placeholder="Digite sua senha" value={password} onChange={e => {setPassword(e.target.value)}} required></input><br/><br/>
+                <div>
+                    <p>Se não tiver uma conta, <a href="/signin">crie uma</a></p>
+                </div>
                 <div>
                     {error && <p>{error}</p>}
                 </div>

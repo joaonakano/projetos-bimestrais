@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import axiosInstance from '../../Utils/AxiosInstance'
+import { useNavigation } from "../../Utils/NavigationContext"
 
 import RemoveButton from '../../Components/Button/Remove/Remove'
 import UpdateButton from '../../Components/Button/Update/Update'
@@ -9,6 +10,21 @@ import Header from "../../Components/Header/Header"
 import "./style.css"
 
 export default function Home() {
+    const navigate = useNavigation()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                await axiosInstance.get('/get/all');
+            } catch (error) {
+                if (error.response && error.response.status === 401) {
+                    navigate('/login'); // Redirect to login page
+                }
+            }
+        }
+        fetchData()
+    }, [navigate])
+
     const [ordersList, setOrdersList] = useState([])
 
     useEffect(() => {

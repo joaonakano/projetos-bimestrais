@@ -9,7 +9,8 @@ class AxiosInstance {
             AxiosInstance.instance = axios.create({
                 baseURL: connectionURL,
                 timeout: 10000,
-                headers: {'Content-Type': 'application/json'}
+                headers: {'Content-Type': 'application/json'},
+                withCredentials: true
             })
         }
     }

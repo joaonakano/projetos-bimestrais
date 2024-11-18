@@ -1,3 +1,4 @@
+import Logout from "../Button/Logout/Logout"
 import "./style.css";
 
 export default function Header() {
@@ -13,6 +14,7 @@ export default function Header() {
                     <span id="brand-name">Burger King</span>
                     <div id="nav-items">
                         <a href="/add">Adicionar um Pedido</a>
+                        <Logout />
                     </div>
                 </div>
             </header>

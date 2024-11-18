@@ -1,9 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axiosInstance from "../../Utils/AxiosInstance"
+import { useNavigation } from "../../Utils/NavigationContext"
 
 import "./style.css";
 
 export default function AddOrderForm() {
+    const navigate = useNavigation()
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                await axiosInstance.get('/get/all');
+            } catch (error) {
+                if (error.response && error.response.status === 401) {
+                    navigate('/login'); // Redirect to login page
+                }
+            }
+        }
+
+        fetchData()
+    }, [navigate])
+
     const [meioPagamento, setMeioPagamento] = useState("dinheiro")
     const [delivery, setDelivery] = useState(false)
     const [status, setStatus] = useState([])
@@ -25,16 +42,18 @@ export default function AddOrderForm() {
         { id: 3, name: "Concluído" }
     ];
 
-    const sendPostRequest = data => {
+    const sendPostRequest = async (data) => {
         // SINGLETON - axiosInstance
-        axiosInstance.post("/create", data)
-            .then(res => {
-                console.log(res)
-                alert("Pedido cadastrado com Sucesso!")
-            })
-            .catch(err => {
-                console.error("Erro ao enviar o formulário:", err)
-            });
+        try {
+            await axiosInstance.post("/create", data)
+            alert("Pedido cadastrado com Sucesso!")
+        } catch (err) {
+            if (err.response && err.err.response.status === 401) {
+                navigate("/login")
+            } else {
+                console.error("Erro ao tentar enviar o formulario:", err)
+            }
+        }
     }
 
     const handleOrderChange = orderName => {
@@ -78,7 +97,7 @@ export default function AddOrderForm() {
         
         // Enviar uma requisição de POST para o servidor com os dados já formatados
         sendPostRequest(data)
-        window.location.href="/"
+        
     }
 
     return (
