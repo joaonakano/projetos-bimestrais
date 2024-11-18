@@ -14,7 +14,7 @@ module.exports = {
             res.cookie('token', idToken, {
                 httpOnly: true,
                 secure: false,
-                maxAge: 10000,
+                maxAge: 600000,
                 path: '/'
             })
             res.status(200).json({message: 'Login successful', user: decodedToken})
