@@ -20,13 +20,15 @@ export default function Home() {
         axiosInstance.get('/get/all')
         .then((res) => {
             setOrdersList(res.data);
-        });
+        })
+        .catch(err => console.error("Erro ao buscar os pedidos:", err))
     }
 
     function sendDeleteRequest(orderID) {
         // SINGLETON - axiosInstance
         axiosInstance.delete(`/delete/${orderID}`)
             .then(res => console.log(res))
+            .catch(err => console.error("Erro ao deletar o pedido:", err))
     }
 
     function handleRemoveOrder(orderID) {
