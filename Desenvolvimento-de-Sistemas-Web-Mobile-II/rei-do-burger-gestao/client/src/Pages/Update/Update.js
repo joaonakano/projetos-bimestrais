@@ -4,7 +4,7 @@ import { useNavigation } from "../../Utils/NavigationContext"
 
 import axiosInstance from "../../Utils/AxiosInstance"
 
-import "./style.css"
+import "../AddOrderForm/style.css" // Import the CSS from AddOrderForm
 
 export default function Update() {
     const navigate = useNavigation()
@@ -48,6 +48,12 @@ export default function Update() {
         {id: 5, name: "Pepsi"}
     ]
 
+    const statuses = [
+        { id: 1, name: "A Fazer" },
+        { id: 2, name: "Em Andamento" },
+        { id: 3, name: "Concluído" }
+    ]
+
     const sendGetRequestForSpecificOrder = orderID => {
         // SINGLETON - axiosInstance
         axiosInstance.get(`/get/${orderID}`)
@@ -87,6 +93,13 @@ export default function Update() {
                 ? prevData.pedido.filter(order => order !== orderName)
                 : [...prevData.pedido, orderName]
             return {...prevData, pedido: newOrder}
+        })
+    }
+
+    const handleStatusChange = statusName => {
+        setFormData(prevData => {
+            const newStatus = prevData.status === statusName ? "" : statusName
+            return {...prevData, status: newStatus}
         })
     }
 
@@ -165,44 +178,19 @@ export default function Update() {
                         <br/>
                         <div>
                             <label>Status:</label><br/>
-                            <label>
-                                <input
-                                    type="radio"
-                                    id="fazer"
-                                    name="status-options"
-                                    value="fazer"
-                                    onChange={e => {setFormData({...formData, status: e.target.value})}}
-                                    checked={formData.status === "fazer"}
-                                    required
-                                />
-                                A Fazer
-                            </label>
-
-                            <label>
-                                <input 
-                                    type="radio"
-                                    id="andamento"
-                                    name="status-options"
-                                    value="andamento"
-                                    onChange={e => {setFormData({...formData, status: e.target.value})}}
-                                    checked={formData.status === "andamento"}
-                                    required
-                                />
-                                Em Andamento
-                            </label>
-
-                            <label>
-                                <input
-                                    type="radio"
-                                    id="concluido"
-                                    name="status-options"
-                                    value="concluido"
-                                    onChange={e => {setFormData({...formData, status: e.target.value})}}
-                                    checked={formData.status === "concluido"}
-                                    required
-                                />
-                                Concluído
-                            </label><br/>
+                            {
+                                statuses.map(status => (
+                                    <div key={status.id}>
+                                        <input
+                                            type="checkbox"
+                                            id={`status-${status.id}`}
+                                            onChange={() => { handleStatusChange(status.name) }}
+                                            checked={formData.status === status.name}
+                                        />
+                                        <label htmlFor={`status-${status.id}`}>{status.name}</label>
+                                    </div>
+                                ))
+                            }<br/>
                         </div>
                         <br/>
 
