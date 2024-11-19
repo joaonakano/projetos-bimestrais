@@ -16,15 +16,15 @@ header {
     width: 100%; 
     background-color: #1a1a1a; 
     border-bottom: 1px solid #2a2a2a;
-    padding: 20px 0; /* Increase the height of the header */
-    z-index: 1000; /* Ensure the header is above other elements */
+    padding: 20px 0; 
+    z-index: 1000; 
 }
 
 .nav-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px; /* Adjust padding to maintain spacing */
+    padding: 0 20px; 
     width: 100%; 
 }
 
@@ -60,11 +60,11 @@ header {
 .container-pedidos {
     padding: 20px;
     margin: 0 auto;
-    max-width: 1200px; /* Increase max-width to allow more space for cards */
+    max-width: 1200px; 
     display: flex;
     margin-top: 10%;
     flex-direction: column;
-    align-items: center; /* Center the content horizontally */
+    align-items: center; 
 }
 
 .container-pedidos h1 {
@@ -77,8 +77,9 @@ header {
 .grade-pedidos {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two cards per row */
-    gap: 20px; /* Space between cards */
+    grid-template-columns: repeat(2, 1fr); 
+    margin-top: 10%;
+    gap: 20px; 
 }
 
 /* Header styles */
@@ -92,33 +93,33 @@ header {
 .pedido-item {
     background-color: #2a2a2a; 
     border-radius: 8px;
-    border: 2px solid #f5a623; /* Add yellow border */
+    border: 2px solid #f5a623; 
     padding: 15px;
     margin-bottom: 15px;
-    width: 100%; /* Ensure the order item takes the full width */
-    max-width: 300px; /* Limit the maximum width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-    transition: transform 0.2s; /* Smooth hover effect */
+    width: 100%; 
+    max-width: 300px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the items inside */
-    position: relative; /* Add position relative */
+    align-items: center; 
+    position: relative; 
 }
 
 .pedido-item:hover {
-    transform: scale(1.02); /* Slightly enlarge on hover */
+    transform: scale(1.02); 
 }
 
 .pedido-item h2 {
     margin-bottom: 10px;
     font-size: 1.25em;
-    color: #f5a623; /* Accent color */
+    color: #f5a623; 
 }
 
 .pedido-item p {
     margin: 5px 0;
     font-size: 1em;
-    text-align: center; /* Center the text */
+    text-align: center; 
 }
 
 .pedido-item hr {
@@ -131,7 +132,7 @@ header {
 .pedido-item ul {
     list-style-type: none;
     padding: 0;
-    width: 100%; /* Ensure the list takes the full width */
+    width: 100%; 
 }
 
 .pedido-item ul li {
@@ -139,7 +140,7 @@ header {
     margin: 5px 0;
     padding: 5px 10px;
     border-radius: 4px;
-    text-align: center; /* Center the text */
+    text-align: center; 
 }
 
 /* Button styles */
@@ -166,7 +167,7 @@ button:hover {
     color: #1a1a1a; 
     border: none;
     border-radius: 4px;
-    padding: 5px 10px; /* Smaller padding for smaller button */
+    padding: 5px 10px; 
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 41%;

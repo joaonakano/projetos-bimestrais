@@ -17,15 +17,15 @@ body {
     background-color: #1a1a1a; 
     margin-left: -36%;
     border-bottom: 1px solid #2a2a2a;
-    padding: 30px 0; /* Increase the height of the header */
-    z-index: 1000; /* Ensure the header is above other elements */
+    padding: 30px 0;
+    z-index: 1000; 
 }
 
 .main-nav-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px; /* Adjust padding to maintain spacing */
+    padding: 0 40px; 
     width: 100%; 
 }
 
@@ -33,7 +33,7 @@ body {
     color: #f5a623; 
     background-color: #1a1a1a;
     margin-top: 1%;
-    font-size: 48px; /* Increase font size */
+    font-size: 48px;
     font-family: 'Righteous', sans-serif;
 }
 
@@ -45,7 +45,7 @@ body {
 #nav-items a:link, #nav-items a:visited {
     color: #e0e0e0; 
     padding: 20px;
-    font-size: 18px; /* Increase font size */
+    font-size: 18px; 
 }
 
 #nav-items a {
