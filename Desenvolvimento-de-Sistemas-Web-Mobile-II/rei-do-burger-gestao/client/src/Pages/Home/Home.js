@@ -52,7 +52,7 @@ export default function Home() {
         // Cria uma nova lista de pedidos removendo um pedido indesejado especificado
         const newOrdersList = ordersList.filter(item => item.documentID !== orderID)
         updateOrdersList(newOrdersList)
-    }
+    }   
 
     function updateOrdersList(newListData) {
         setOrdersList(newListData);

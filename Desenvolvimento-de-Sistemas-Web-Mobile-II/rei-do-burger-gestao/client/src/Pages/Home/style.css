@@ -17,6 +17,7 @@ header {
     background-color: #1a1a1a; 
     border-bottom: 1px solid #2a2a2a;
     padding: 20px 0; /* Increase the height of the header */
+    z-index: 1000; /* Ensure the header is above other elements */
 }
 
 .nav-bar {
@@ -59,33 +60,33 @@ header {
 .container-pedidos {
     padding: 20px;
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 1200px; /* Increase max-width to allow more space for cards */
     display: flex;
+    margin-top: 10%;
     flex-direction: column;
     align-items: center; /* Center the content horizontally */
 }
+
 .container-pedidos h1 {
     display: flex;
     justify-content: center;
     color: #fff; 
     margin-bottom: 20px;
-    margin-right: 8%;
 }
 
 .grade-pedidos {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Two cards per row */
+    grid-template-columns: repeat(2, 1fr); /* Two cards per row */
     gap: 20px; /* Space between cards */
 }
 
 /* Header styles */
 .header-card {
-    
     color: #f5a623; 
     font-size: 1.5em;
-    margin-left: 45%;
-    z-index: 500000;
+    text-align: center;
+    margin-left: 50%;
 }
 
 .pedido-item {
@@ -102,12 +103,10 @@ header {
     flex-direction: column;
     align-items: center; /* Center the items inside */
     position: relative; /* Add position relative */
-    z-index: 1; /* Ensure the card is below the modal */
 }
 
 .pedido-item:hover {
     transform: scale(1.02); /* Slightly enlarge on hover */
-    z-index: 1; /* Ensure the card is below the modal */
 }
 
 .pedido-item h2 {
@@ -170,8 +169,7 @@ button:hover {
     padding: 5px 10px; /* Smaller padding for smaller button */
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width:41%;
-
+    width: 41%;
 }
 
 .update-button:hover {
@@ -187,8 +185,9 @@ button:hover {
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-bottom: 20px; 
-    margin-left: -9%;
+    margin-left: -1%;
 }
+
 .refresh-button:hover {
     background-color: #e59400; 
 }
