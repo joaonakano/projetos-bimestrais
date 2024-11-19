@@ -1,11 +1,28 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { useNavigation } from "../../Utils/NavigationContext"
 
 import axiosInstance from "../../Utils/AxiosInstance"
 
 import "./style.css"
 
 export default function Update() {
+    const navigate = useNavigation()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                await axiosInstance.get('/get/all');
+            } catch (error) {
+                if (error.response && error.response.status === 401) {
+                    navigate('/login'); // Redirect to login page
+                }
+            }
+        }
+
+        fetchData()
+    }, [navigate])
+
     // Armazena o ID do Pedido vindo da URL
     const { id } = useParams()
     const orderID = id
@@ -49,16 +66,19 @@ export default function Update() {
             .catch(err => console.error(err))
     }
 
-    const sendPostRequest = data => {
+    const sendPostRequest = async (data) => {
         // SINGLETON - axiosInstance
-        axiosInstance.post(`/update/${orderID}`, data)
-        .then(res => {
-            console.log(res)
-            alert("Pedido atualizado com Sucesso!")
-        })
-        .catch(err => {
-            console.error("Erro ao enviar o formulário:", err)
-        })   
+        try {
+            await axiosInstance.post(`/update/${orderID}`, data)
+            alert("Pedido atualizado com Sucesso")
+        } catch (err) {
+            if (err.response && err.response.status === 401) {
+                navigate("/login")
+            } else {
+                console.error("Erro ao enviar o formulario:", err)
+            }
+        }
+
     }
 
     const handleOrderChange = orderName => {
@@ -89,7 +109,7 @@ export default function Update() {
 
         // Enviando os dados coletados
         sendPostRequest(data)
-        window.location.href="/"
+        navigate("/")
     }
 
     return(
